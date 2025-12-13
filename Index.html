@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj Shekar & Harshini | Forever & Always</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        /* --- General Reset & Typography --- */
+        :root {
+            --primary-color: #b76e79; /* Dusty Rose */
+            --secondary-color: #c5a059; /* Muted Gold */
+            --accent-color: #a5b68d; /* Sage Green */
+            --bg-color: #faf9f6; /* Alabaster White */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+            --shadow-soft: 0 5px 15px rgba(0,0,0,0.05);
+            --shadow-medium: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        body.loaded {
+            overflow-y: auto;
+        }
+
+        /* --- FULL SCREEN PRELOADER --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #faf9f6 0%, #f5f1ea 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        #preloader.hide-preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .preloader-gif {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .preloader-text {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .preloader-subtext {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3 { font-weight: 400; color: var(--text-dark); }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* --- Elegant Header --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(183, 110, 121, 0.1);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-script);
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo::after {
+            content: '♥';
+            font-size: 1.2rem;
+            position: absolute;
+            top: -5px;
+            right: -15px;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover { 
+            color: var(--primary-color); 
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photos/1 (1).JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            margin-bottom: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(183,110,121,0.1), rgba(197,160,89,0.1));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-content h2 {
+            font-family: var(--font-script);
+            font-size: 7rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            line-height: 1;
+        }
+
+        .hero-content p {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content p::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .hero-date {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--secondary-color);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- Story Timeline --- */
+        .story-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #faf9f6 0%, #fff 100%);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            font-weight: 300;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 25px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* --- Gallery Styles --- */
+        .gallery-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .gallery-controls {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--secondary-color);
+            padding: 12px 30px;
+            margin: 8px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            color: var(--text-dark);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .filter-btn.active::before, .filter-btn:hover::before {
+            left: 0;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 25px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) { 
+            .masonry-grid { column-count: 2; } 
+            .hero-content h2 { font-size: 5rem; }
+        }
+        
+        @media (max-width: 768px) { 
+            .masonry-grid { column-count: 1; } 
+            .hero-content h2 { font-size: 3.5rem; }
+            .hero { min-height: 600px; }
+            nav ul { gap: 20px; }
+            .logo { font-size: 2.2rem; }
+        }
+
+        .photo-card {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            background: #f8f8f8;
+            min-height: 200px;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+            min-height: 200px;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-overlay i {
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: var(--transition);
+        }
+
+        .photo-card:hover .photo-overlay i {
+            transform: scale(1.1);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Internal Loader --- */
+        .loader-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px;
+            min-height: 300px;
+        }
+
+        .loading-gif-small {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Pagination --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 60px 0 40px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #e8e8e8;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            border-radius: 50%;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* --- Lightbox --- */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.98);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            text-align: center;
+        }
+
+        .lightbox img {
+            max-height: 85vh;
+            max-width: 85vw;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--shadow-soft);
+            z-index: 2001;
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 25px;
+            color: var(--text-dark);
+            transition: var(--transition);
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+            z-index: 2001;
+        }
+        
+        .nav-prev { left: 30px; }
+        .nav-next { right: 30px; }
+        
+        .lightbox-nav:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: #aaa;
+            padding: 100px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-family: var(--font-script);
+            font-size: 3.2rem;
+            font-weight: 400;
+            position: relative;
+            display: inline-block;
+        }
+
+        footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .social-links a {
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.1);
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(183,110,121,0.3);
+        }
+
+        .copyright {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            font-family: var(--font-sans);
+            letter-spacing: 1px;
+        }
+
+        /* --- Floating Hearts --- */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary-color);
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+            font-size: 1.5rem;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- Back to Top --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(183,110,121,0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="load.gif" alt="Loading..." class="preloader-gif" onerror="this.onerror=null; this.src='https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-27-213_512.gif'">
+            <div class="preloader-text">Raj Shekar & Harshini</div>
+            <div class="preloader-subtext">Loading our special moments</div>
+        </div>
+    </div>
+
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <header id="mainHeader">
+        <div class="container header-inner">
+            <a href="#" class="logo">Raj Shekar & Harshini</a>
+            <nav>
+                <ul>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>We Said Yes</h2>
+            <p>November 24, 2025 • Vanasthalipuram</p>
+            <div class="hero-date">Forever Begins Here</div>
+        </div>
+    </section>
+
+    <div class="container" id="story">
+        <div class="story-section">
+            <h2 class="section-title">Our EngagementStory</h2>
+            <p class="section-subtitle">
+                Every moment was a chapter in our love story. From the first glance to the final dance, 
+                these memories will be cherished forever. Welcome to our digital album, where love is captured in every frame.
+            </p>
+        </div>
+    </div>
+
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 20px;">The EngagementGallery</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; color: var(--text-light);">
+                Browse through our special moments. Each photo tells a story of joy, love, and celebration.
+            </p>
+
+            <div class="gallery-controls">
+                <button class="filter-btn active" onclick="filterPhotos('all')">All Moments</button>
+                <button class="filter-btn" onclick="filterPhotos('couple')">Couple Portraits</button>
+                <button class="filter-btn" onclick="filterPhotos('group')">Group Photos</button>
+                <button class="filter-btn" onclick="filterPhotos('dance')">Dance & Fun</button>
+                <button class="filter-btn" onclick="filterPhotos('single')">Candid Moments</button>
+            </div>
+
+            <div class="loader-container" id="loader">
+                <img src="load.gif" alt="Loading" class="loading-gif-small" onerror="this.onerror=null; this.src='https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-27-213_512.gif'">
+                <p style="font-family: var(--font-sans); color: var(--text-light); letter-spacing: 2px;">Loading beautiful memories...</p>
+            </div>
+
+            <div class="masonry-grid" id="photo-grid">
+                <!-- Photos will be loaded here -->
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <h3>Raj Shekar & Harshini</h3>
+            <p style="max-width: 600px; margin: 20px auto; color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+                Thank you for being part of our special day. Your love and blessings mean the world to us.
+            </p>
+            <div class="social-links">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                
+            </div>
+            <p class="copyright">&copy; 2025 Raj Shekar & Harshini • Made with <i class="fas fa-heart" style="color: var(--primary-color); margin: 0 5px;"></i> Forever & Always</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-nav nav-prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-nav nav-next"><i class="fas fa-chevron-right"></i></div>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="EngagementPhoto" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const COUNTS = {
+            couple: 94,   
+            dance: 26,     
+            single: 11,    
+            group: 144    
+        };
+
+        const PHOTOS_PER_PAGE = 2000; 
+        
+        let allPhotos = [];
+        let currentPage = 1;
+        let currentCategory = 'all';
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '♥';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 15}s`;
+                heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                container.appendChild(heart);
+            }
+        }
+
+        // Initialize photo data
+        function initData() {
+            const addPhotos = (folderName, categoryName, count) => {
+                for (let i = 1; i <= count; i++) {
+                    allPhotos.push({
+                        id: `${categoryName}-${i}`,
+                        src: `${folderName}/1 (${i}).JPG`,
+                        category: categoryName,
+                        alt: `${categoryName} photo ${i} - Raj Shekar & Harshini Wedding`
+                    });
+                }
+            };
+
+            addPhotos('couple', 'couple', COUNTS.couple);
+            addPhotos('dance', 'dance', COUNTS.dance);
+            addPhotos('single', 'single', COUNTS.single);
+            addPhotos('photos', 'group', COUNTS.group);
+
+            // Shuffle for better visual appeal
+            allPhotos.sort(() => Math.random() - 0.5);
+
+            createFloatingHearts();
+            renderGallery();
+        }
+
+        // --- PRELOADER LOGIC ---
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hide-preloader');
+                document.body.classList.add('loaded');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 2500);
+        });
+
+        // --- Header scroll effect ---
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // --- Back to Top ---
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Gallery Functions ---
+        function renderGallery() {
+            const grid = document.getElementById('photo-grid');
+            const loader = document.getElementById('loader');
+            
+            grid.style.opacity = '0';
+            loader.style.display = 'flex';
+            
+            const filtered = currentCategory === 'all' 
+                ? allPhotos 
+                : allPhotos.filter(p => p.category === currentCategory);
+
+            const start = (currentPage - 1) * PHOTOS_PER_PAGE;
+            const end = start + PHOTOS_PER_PAGE;
+            const toShow = filtered.slice(start, end);
+
+            setTimeout(() => {
+                grid.innerHTML = '';
+                
+                if (toShow.length === 0) {
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 60px;">
+                            <i class="fas fa-camera" style="font-size: 3rem; color: var(--text-light); margin-bottom: 20px;"></i>
+                            <h3 style="color: var(--text-light); font-family: var(--font-sans);">No photos found</h3>
+                            <p style="color: var(--text-light); max-width: 500px; margin: 20px auto;">
+                                Photos will appear here once they are loaded. Please check your folder structure.
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    toShow.forEach(photo => {
+                        const card = document.createElement('div');
+                        card.className = 'photo-card';
+                        card.innerHTML = `
+                            <img 
+                                src="${photo.src}" 
+                                alt="${photo.alt}"
+                                loading="lazy"
+                                onerror="handleImageError(this)"
+                            >
+                            <div class="photo-overlay"><i class="fas fa-heart"></i></div>
+                        `;
+                        card.onclick = () => openLightbox(photo.id);
+                        grid.appendChild(card);
+                    });
+                }
+
+                renderPagination(Math.ceil(filtered.length / PHOTOS_PER_PAGE));
+                loader.style.display = 'none';
+                grid.style.opacity = '1';
+            }, 500);
+        }
+
+        
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById('pagination');
+            container.innerHTML = '';
+            
+            if(totalPages <= 1) return;
+
+            // Previous button
+            if (currentPage > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'page-btn';
+                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevBtn.onclick = () => {
+                    currentPage--;
+                    renderGallery();
+                };
+                container.appendChild(prevBtn);
+            }
+
+            // Page numbers
+            const maxVisible = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+            
+            if (endPage - startPage + 1 < maxVisible) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            for(let i = startPage; i <= endPage; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => {
+                    currentPage = i;
+                    renderGallery();
+                    window.scrollTo({
+                        top: document.getElementById('gallery').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                };
+                container.appendChild(btn);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'page-btn';
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.onclick = () => {
+                    currentPage++;
+                    renderGallery();
+                };
+                container.appendChild(nextBtn);
+            }
+        }
+
+        function filterPhotos(cat) {
+            currentCategory = cat;
+            currentPage = 1;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find the clicked button
+            const buttons = document.querySelectorAll('.filter-btn');
+            const clickedBtn = Array.from(buttons).find(btn => 
+                btn.innerText.toLowerCase().includes(cat === 'group' ? 'group' : cat)
+            );
+            
+            if (clickedBtn) clickedBtn.classList.add('active');
+            
+            renderGallery();
+        }
+
+        // --- Lightbox Logic ---
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const navPrev = document.querySelector('.nav-prev');
+        const navNext = document.querySelector('.nav-next');
+        let currentPhotoIndex = -1;
+
+        function getCurrentFilteredPhotos() {
+            return currentCategory === 'all' 
+                ? allPhotos 
+                : allPhotos.filter(p => p.category === currentCategory);
+        }
+
+        function openLightbox(photoId) {
+            const filtered = getCurrentFilteredPhotos();
+            currentPhotoIndex = filtered.findIndex(p => p.id === photoId);
+            if (currentPhotoIndex !== -1) {
+                updateLightbox(filtered[currentPhotoIndex].src);
+            }
+        }
+
+        function updateLightbox(src) {
+            lbImg.src = src;
+            lightbox.style.display = 'flex';
+            setTimeout(() => lightbox.classList.add('show'), 10);
+            updateNavButtons();
+        }
+
+        function updateNavButtons() {
+            const filtered = getCurrentFilteredPhotos();
+            navPrev.style.display = currentPhotoIndex > 0 ? 'flex' : 'none';
+            navNext.style.display = currentPhotoIndex < filtered.length - 1 ? 'flex' : 'none';
+        }
+
+        function navigateLightbox(direction) {
+            const filtered = getCurrentFilteredPhotos();
+            currentPhotoIndex += direction;
+
+            if (currentPhotoIndex >= 0 && currentPhotoIndex < filtered.length) {
+                lbImg.src = filtered[currentPhotoIndex].src;
+                updateNavButtons();
+            } else {
+                currentPhotoIndex -= direction;
+            }
+        }
+
+        // Event listeners
+        navPrev.onclick = () => navigateLightbox(-1);
+        navNext.onclick = () => navigateLightbox(1);
+        document.querySelector('.lightbox-close').onclick = closeLightbox;
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            setTimeout(() => lightbox.style.display = 'none', 300);
+        }
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('show')) {
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Click outside image to close
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Initialize when DOM is loaded
+        window.addEventListener('DOMContentLoaded', initData);
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
